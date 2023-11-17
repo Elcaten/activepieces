@@ -3,7 +3,8 @@
         "Activepieces",
         "Fastify",
         "mpim",
-        "sendgrid"
+        "sendgrid",
+        "splitwise"
     ],
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": "explicit"

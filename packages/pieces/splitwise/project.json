@@ -1,0 +1,44 @@
+{
+  "name": "pieces-splitwise",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/pieces/splitwise/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/packages/pieces/splitwise",
+        "tsConfig": "packages/pieces/splitwise/tsconfig.lib.json",
+        "packageJson": "packages/pieces/splitwise/package.json",
+        "main": "packages/pieces/splitwise/src/index.ts",
+        "assets": [
+          "packages/pieces/splitwise/*.md"
+        ],
+        "buildableProjectDepsInPackageJsonType": "dependencies",
+        "updateBuildableProjectDepsInPackageJson": true
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs pieces-splitwise {args.ver} {args.tag}",
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "packages/pieces/splitwise/**/*.ts",
+          "packages/pieces/splitwise/package.json"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
